@@ -1,35 +1,27 @@
 import React, {useState} from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {FlatList, StyleSheet, Text, View} from 'react-native';
 
-export default function FlatList() {
-  const [people, setPeople] = useState([
-    {name: 'Jhon', key: '1'},
-    {name: 'Yoshi', key: '2'},
-    {name: 'Mario', key: '3'},
-    {name: 'Luigi', key: '4'},
-    {name: 'Peach', key: '5'},
-    {name: 'Toad', key: '6'},
-    {name: 'Bowser', key: '7'},
+export default function FlatListExample() {
+  const [peopleName, setPeopleName] = useState([
+    { name: 'Shaun', id: '1' },
+    { name: 'Yoshi', id: '2' },
+    { name: 'Mario', id: '3' },
+    { name: 'Luigi', id: '4' },
+    { name: 'Peach', id: '5' },
+    { name: 'Toad', id: '6' },
+    { name: 'Bowser', id: '7' },
   ]);
   return (
     <View style={styles.container}>
       <FlatList
-        data={people}
+        numColumns={2}
+        keyExtractor={(item) => item.id}
+        data={peopleName}
         renderItem={({item}) => <Text style={styles.item}>{item.name}</Text>}
       />
-
-      {/*<ScrollView>
-                {names.map(item => (
-                    <View key={item.key}>
-                        <Text style={styles.item}>
-                            {item.name}
-                        </Text>
-                    </View>
-                ))}
-            </ScrollView>*/}
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -37,13 +29,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingTop: 40,
     paddingHorizontal: 20,
-    /* alignItems: "center",
-     justifyContent: "center",*/
   },
   item: {
-    marginTop: 24,
     padding: 30,
     backgroundColor: 'pink',
     fontSize: 24,
+    marginHorizontal: 10,
+    marginTop: 24,
   },
 });

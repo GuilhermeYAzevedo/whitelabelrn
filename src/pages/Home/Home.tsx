@@ -39,6 +39,12 @@ function Home() {
           navigation.navigate('FlatList', {text: 'hi!'});
         }}
       />
+      <Button
+        title="Go to Touchable Components"
+        onPress={() => {
+          navigation.navigate('TouchableComponents', {text: 'hi!'});
+        }}
+      />
     </View>
   );
 }
